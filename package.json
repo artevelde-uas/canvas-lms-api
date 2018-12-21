@@ -1,0 +1,19 @@
+{
+  "name": "@artevelde-uas/canvas-lms-api",
+  "version": "0.1.0",
+  "description": "Canvas LMS API for use in the browser",
+  "keywords": [
+    "Canvas LMS",
+    "API"
+  ],
+  "license": "MIT",
+  "author": "Renaat De Muynck <renaat.demuynck@arteveldehs.be>",
+  "repository": "https://github.com/artevelde-uas/canvas-lms-api",
+  "module": "src/index.js",
+  "files": [
+    "src/index.js"
+  ],
+  "dependencies": {
+    "js-cookie": "^2.2.1"
+  }
+}
