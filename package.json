@@ -11,7 +11,11 @@
   "repository": "https://github.com/artevelde-uas/canvas-lms-api",
   "module": "src/index.js",
   "files": [
-    "src/index.js"
+    "src/index.js",
+    "src/buildQueryString.js",
+    "src/canvasApiFetch.js",
+    "src/CanvasApiRequest.js",
+    "src/CanvasApiResponse.js"
   ],
   "dependencies": {
     "js-cookie": "^2.2.1"
