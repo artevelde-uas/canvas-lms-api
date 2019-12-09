@@ -12,8 +12,7 @@
   "module": "src/index.js",
   "files": [
     "src/index.js",
-    "src/buildQueryString.js",
-    "src/canvasApiFetch.js",
+    "src/util.js",
     "src/CanvasApiRequest.js",
     "src/CanvasApiResponse.js"
   ],
