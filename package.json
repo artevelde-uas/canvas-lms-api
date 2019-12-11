@@ -1,6 +1,6 @@
 {
   "name": "@artevelde-uas/canvas-lms-api",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Canvas LMS API for use in the browser",
   "keywords": [
     "Canvas LMS",
