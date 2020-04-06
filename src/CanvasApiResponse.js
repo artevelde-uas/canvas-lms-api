@@ -33,6 +33,9 @@ export default class CanvasApiResponse extends Response {
             statusText: response.statusText,
             headers: response.headers
         });
+
+        // Fix for extending native objects in Safari
+        Object.setPrototypeOf(this, CanvasApiResponse.prototype);
     }
 
     async text() {

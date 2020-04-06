@@ -42,6 +42,9 @@ export default class CanvasApiRequest extends Request {
         }
 
         super(url, init);
+
+        // Fix for extending native objects in Safari
+        Object.setPrototypeOf(this, CanvasApiRequest.prototype);
     }
 
 }
