@@ -8,6 +8,9 @@ import { canvasApiFetch } from './util';
  */
 export default class CanvasApiResponse extends Response {
 
+    /**
+     * Gets a list of link headers from the re
+     */
     get links() {
         let linkHeader = this.headers.get('Link');
 
@@ -38,14 +41,35 @@ export default class CanvasApiResponse extends Response {
         Object.setPrototypeOf(this, CanvasApiResponse.prototype);
     }
 
+    /**
+     * Takes a Response stream and reads it to completion
+     *
+     * If the result has "while(1);" prepended, it will be stripped
+     *
+     * @override
+     * @returns {string} A Promise that resolves with a USVString
+     */
     async text() {
         return (await super.text()).replace(/^while\(1\);/, '');
     }
 
+    /**
+     * Takes a Response stream and reads it to completion
+     *
+     * @override
+     * @returns {string} A Promise that resolves to a JavaScript object
+     */
     async json() {
         return JSON.parse(await this.text());
     }
 
+    /**
+     * Iterator which loops over all the items from the response
+     *
+     * Will make additional requests to the API if needed
+     *
+     * @yields {object} The next object from the JSON response
+     */
     async * iterator() {
         let response = this;
 
@@ -64,6 +88,14 @@ export default class CanvasApiResponse extends Response {
         } while (response !== null);
     }
 
+    /**
+     * Returns an array of objects from the response
+     *
+     * The resulting array is not paged and will contain ALL the objects
+     * Will make additional requests to the API if needed
+     *
+     * @returns {Object[]} An array of objects
+     */
     async array() {
         let array = [];
 
