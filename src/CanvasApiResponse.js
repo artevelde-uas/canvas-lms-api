@@ -14,7 +14,7 @@ export default class CanvasApiResponse extends Response {
         if (linkHeader === null) return null;
 
         return linkHeader.split(',').reduce((links, value) => {
-            var match = value.match(/^<https:\/\/.+\/api\/v1\/(.+)>; rel="(\w+)"$/);
+            let match = value.match(/^<https:\/\/.+\/api\/v1\/(.+)>; rel="(\w+)"$/);
 
             if (match !== null) {
                 let type = match[2];
@@ -44,7 +44,7 @@ export default class CanvasApiResponse extends Response {
     }
 
     async * iterator() {
-        var response = this;
+        let response = this;
 
         do {
             let data = await response.json();
@@ -62,7 +62,7 @@ export default class CanvasApiResponse extends Response {
     }
 
     async array() {
-        var array = [];
+        let array = [];
 
         for await (let item of this.iterator()) {
             array.push(item);

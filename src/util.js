@@ -14,7 +14,7 @@ import CanvasApiResponse from './CanvasApiResponse';
  * @return {CanvasApiResponse} A Canvas API resonse object
  */
 export async function canvasApiFetch(resource, init = {}) {
-    var request = (resource instanceof CanvasApiRequest) ? resource : new CanvasApiRequest(resource, init);
+    let request = (resource instanceof CanvasApiRequest) ? resource : new CanvasApiRequest(resource, init);
 
     return new CanvasApiResponse(await fetch(request));
 }
@@ -32,7 +32,7 @@ export async function canvasApiFetch(resource, init = {}) {
  * @return {string} The serialized string
  */
 export function buildQueryString(data, prefix) {
-    var params = [];
+    let params = [];
 
     // Just encode primitive values if no prefix given
     if (prefix === undefined && (typeof data !== 'object' || data === null)) {
