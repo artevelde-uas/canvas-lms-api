@@ -12,16 +12,16 @@ export default class CanvasApiResponse extends Response {
      * Gets a list of link headers from the re
      */
     get links() {
-        let linkHeader = this.headers.get('Link');
+        const linkHeader = this.headers.get('Link');
 
         if (linkHeader === null) return null;
 
         return linkHeader.split(',').reduce((links, value) => {
-            let match = value.match(/^<https:\/\/.+\/api\/v1\/(.+)>; rel="(\w+)"$/);
+            const match = value.match(/^<https:\/\/.+\/api\/v1\/(.+)>; rel="(\w+)"$/);
 
             if (match !== null) {
-                let type = match[2];
-                let url = '/' + match[1];
+                const type = match[2];
+                const url = '/' + match[1];
 
                 links[type] = url;
             }
@@ -97,7 +97,7 @@ export default class CanvasApiResponse extends Response {
      * @returns {Object[]} An array of objects
      */
     async array() {
-        let array = [];
+        const array = [];
 
         for await (let item of this.iterator()) {
             array.push(item);

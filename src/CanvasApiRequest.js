@@ -19,8 +19,8 @@ export default class CanvasApiRequest extends Request {
      * @param  {object} [init.data] - The JSON data to be sent as the request body
      */
     constructor(path, { method, queryParams, data } = {}) {
-        let url = new URL('/api/v1' + path, window.location);
-        let init = {
+        const url = new URL('/api/v1' + path, window.location);
+        const init = {
             method,
             // Add headers required for the Canvas REST API
             headers: new Headers({
