@@ -30,10 +30,13 @@ export default class CanvasApiRequest extends Request {
                 'X-Requested-With': 'XMLHttpRequest'
             })
         };
+        // Get the search params from the url
+        const searchParams = Object.fromEntries((new URLSearchParams(url.search)).entries());
 
         // Add the serialized query parameters to the url
-        url.search += ((url.search === '') ? '?' : '&') + buildQueryString({
+        url.search = '?' + buildQueryString({
             per_page: 100,
+            ...searchParams,
             ...queryParams
         });
 
