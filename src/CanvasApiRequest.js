@@ -32,9 +32,10 @@ export default class CanvasApiRequest extends Request {
         };
 
         // Add the serialized query parameters to the url
-        if (queryParams) {
-            url.search += ((url.search === '') ? '?' : '&') + buildQueryString(queryParams);
-        }
+        url.search += ((url.search === '') ? '?' : '&') + buildQueryString({
+            per_page: 100,
+            ...queryParams
+        });
 
         // Convert the data to JSON string
         if (data) {
