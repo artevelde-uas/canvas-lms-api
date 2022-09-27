@@ -9,7 +9,7 @@ import { canvasApiFetch } from './util';
 export default class CanvasApiResponse extends Response {
 
     /**
-     * Gets a list of link headers from the re
+     * Gets a list of link headers from the response
      */
     get links() {
         const linkHeader = this.headers.get('Link');
