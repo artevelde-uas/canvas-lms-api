@@ -9,8 +9,8 @@ import { canvasApiFetch } from './util';
  * @return {object|array} An object or array of objects
  */
 async function request(path, init) {
-    let request = new CanvasApiRequest(path, init);
-    let response = await canvasApiFetch(request);
+    const request = new CanvasApiRequest(path, init);
+    const response = await canvasApiFetch(request);
 
     return (response.links === null) ? response.json() : response.array();
 }
