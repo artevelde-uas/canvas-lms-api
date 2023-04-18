@@ -12,7 +12,21 @@ async function request(path, init) {
     const request = new CanvasApiRequest(path, init);
     const response = await canvasApiFetch(request);
 
-    return (response.links === null) ? response.json() : response.array();
+    // If a links object exists, the result is a paged list
+    if (response.links !== null) {
+        // Convert it to an unpaged list
+        return response.array();
+    }
+
+    // Otherwise, get the JSON response
+    const json = await response.json();
+
+    // If an errors array exists, throw the first error in the list
+    if (Array.isArray(json.errors)) {
+        throw new Error(json.errors[0].message);
+    }
+
+    return json;
 }
 
 /**
